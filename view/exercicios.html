@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../public/css/customizacaoExerc.css">
+    <link rel="icon" href="../images/logo.png">
+    <title>Exercícios</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Execícios</h1>
+        <form action="" method="post">
+            <select class="form-select form-select-lg mb-3" onchange="mostradiv(this.value)"
+                name="sele&ccedil;&atilde;o" size="1">
+                <option selected disabled value="">Escolha o exercício que deseja olhar:</option>
+                <option value="calculadora">Calculadora</option>
+                <option value="potencia">Potência sem biblioteca</option>
+                <option value="multiplicacaoCSoma">Multiplicação sem biblioteca</option>
+                <option value="reverso"> Reverso da palavra</option>
+            </select>
+        </form>
+        <div class="exercicio" id="calculadora" style="display:none;">
+            <h1>CALCULADORA</h1>
+            <div class="visor">
+                <h6 id="miniVisor">
+                </h6>
+                <h3 id="visor">
+                </h3>
+            </div>
+            <table class="table">
+                <tr>
+                    <td><button onclick="divisorUm()">1/x</button></td>
+                    <td><button onclick="inserir(3.14)">π</button></td>
+                    <td><button onclick="excluir()">C</button></td>
+                    <td><button onclick="deletar()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-eraser" viewBox="0 0 16 16">
+                                <path
+                                    d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm2.121.707a1 1 0 0 0-1.414 0L4.16 7.547l5.293 5.293 4.633-4.633a1 1 0 0 0 0-1.414l-3.879-3.879zM8.746 13.547 3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z" />
+                            </svg></button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="dobro()">x²</button></td>
+                    <td><button onclick="triplo()">x³</button></td>
+                    <td><button onclick="raiz()">√</button></td>
+                    <td><button onclick="inserir('/')">/</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="inserir('7')">7</button></td>
+                    <td><button onclick="inserir('8')">8</button></td>
+                    <td><button onclick="inserir('9')">9</button></td>
+                    <td><button onclick="inserir('*')">X</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="inserir('4')">4</button></td>
+                    <td><button onclick="inserir('5')">5</button></td>
+                    <td><button onclick="inserir('6')">6</button></td>
+                    <td><button onclick="inserir('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="inserir('1')">1</button></td>
+                    <td><button onclick="inserir('2')">2</button></td>
+                    <td><button onclick="inserir('3')">3</button></td>
+                    <td><button onclick="inserir('+')">+</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="mudar()">+/-</button></td>
+                    <td><button onclick="inserir('0')">0</button></td>
+                    <td><button onclick="inserir('.')">,</button></td>
+                    <td><button onclick="resultado('=')">=</button></td>
+                </tr>
+            </table>
+        </div>
+        <div class="exercicio" id="multiplicacaoCSoma" style="display:none;">
+            <div class="row">
+                <p>Faça um algoritmo que faz a multiplicação entre 2 números sem utilizar o operador de multiplicação
+                    (*) ou
+                    qualquer outra função (Utilizar Soma).</p>
+                <div class="col-5">
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="valorUmM" placeholder="Informe um valor">
+                        <label for="floatingInput">Informe um valor</label>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <p>X</p>
+                </div>
+                <div class="col-5">
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="valorDoisM" placeholder="Informe um valor">
+                        <label for="floatingInput">Informe um valor</label>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button class="centro" onclick="multiplicar()">Multiplicar</button>
+            </div>
+        </div>
+        <div class="exercicio" id="potencia" style="display:none;">
+            <div class="row">
+                <p>Faça um algoritmo que faz a potência a partir da base e expoente sem utilizar quaisquer biblioteca.
+                </p>
+                <div class="col-5">
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="valorUmP" placeholder="Informe um valor">
+                        <label for="floatingInput">Informe um valor</label>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <p>^</p>
+                </div>
+                <div class="col-5">
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="valorDoisP" placeholder="Informe um valor">
+                        <label for="floatingInput">Informe um valor</label>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button class="centro" onclick="potencia()">Potencializar</button>
+            </div>
+        </div>
+        <br>
+        <div class="exercicio" id="reverso" style="display:none;">
+            <p>Reverso das palavras <br>Faça um algoritmo que leia uma palavra e retorne o seu inverso</p>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="palavra" placeholder="Informe uma palavra">
+                <label for="floatingInput">Informe uma palavra</label>
+            </div>
+            <div>
+                <button class="centro" onclick="reverso()">Reverso</button>
+            </div>
+        </div>
+        <p id="resposta"></p>
+    </div>
+    <script src="../public/js/exercicios.js"></script>
+</body>
+
+</html>
